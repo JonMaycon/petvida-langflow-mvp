@@ -96,40 +96,6 @@ O Langflow publica o fluxo como API. Por isso, o mesmo agente pode atender outro
 └── docs/img/                                      # imagens deste README
 ```
 
-## Como rodar
-
-1. **Planilha**
-   - Faça upload de `PetVida_Agenda_Planilha.xlsx` no Google Drive.
-   - Abra o arquivo e escolha *Arquivo → Salvar como Planilhas Google*.
-2. **Apps Script**
-   - Na planilha, abra *Extensões → Apps Script* e cole o conteúdo de `PetVida_Agenda_AppsScript.gs`.
-   - Defina um `TOKEN` próprio no código.
-   - Publique em *Implantar → Nova implantação → App da Web*, com execução como **Eu** e acesso para **Qualquer pessoa**.
-   - Copie a URL que termina em `/exec`.
-3. **Langflow (1.12+)**
-   - Importe o `.json` pelo ícone ↑ ao lado de *Projects*.
-   - No **Agent**, escolha o modelo e informe a API Key.
-   - No nó **Agenda PetVida**, cole a URL `/exec` e o token.
-4. **Langfuse (opcional)**
-   - Crie um arquivo `.env` com as chaves abaixo:
-     ```
-     LANGFUSE_SECRET_KEY=sk-lf-...
-     LANGFUSE_PUBLIC_KEY=pk-lf-...
-     LANGFUSE_BASE_URL=https://us.cloud.langfuse.com
-     ```
-   - Inicie o Langflow com:
-     ```
-     python -m langflow run --env-file .env
-     ```
-5. **Teste**
-   - No Playground, mande: *"quero marcar banho pro meu cachorro de 5 kg na sexta de manhã"*.
-6. **WhatsApp (quando for para produção)**
-   - Troque a ligação *Chat Input → Agent* por *WhatsApp Entrada → Agent*.
-   - Configure a Evolution API no nó **WhatsApp Envio**.
-   - Aponte o webhook da Evolution para o endpoint do nó **Webhook**.
-
-> **Segredos:** nunca versionar `.env`, API Keys ou o `TOKEN` do Apps Script. O `.gitignore` deste repositório já ignora `.env`.
-
 ## Roadmap
 
 | Fase | Status | Entregas | Critério para avançar |
